@@ -50,6 +50,7 @@ assertEqual(
 
 assert(/discharging: \{[\s\S]*?Model\.drawingFromBattery\(device, UPower\.onBattery, upowerStates\(\), root\.plugSettling\)/.test(panelSource), 'power derives charge direction from the settled battery state')
 assert(/function onOnBatteryChanged\(\) \{[\s\S]*?root\.plugSettling = true[\s\S]*?plugSettleTimer\.restart\(\)/.test(panelSource), 'power opens a settle window on every plug change')
+assert(/omarchy-powerprofiles-set", UPower\.onBattery \? "battery" : "ac", profile/.test(panelSource), 'power saves profile choices under the power source key, like every other entry point')
 assert(/if \(b === Qt\.RightButton\) root\.togglePercentage\(\)/.test(panelSource), 'power right click toggles the bar percentage')
 assert(/Object\.assign\([^\n]+showPercentage: !root\.showPercentage[^\n]+\)[\s\S]*updateEntryInline/.test(panelSource), 'power persists the bar percentage setting')
 assert(/Math\.round\(root\.batteryFraction \* 100\) \+ "% " \+ root\.batteryIcon\(\)/.test(panelSource), 'power places the percentage before the battery icon')
